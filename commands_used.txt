@@ -1,0 +1,21 @@
+# Step 1: Enable UFW
+sudo ufw enable
+
+# Step 2: Allow SSH access (important to avoid locking yourself out)
+sudo ufw allow 22
+
+# Step 3: Deny Telnet (Port 23) to block insecure protocol
+sudo ufw deny 23
+
+# Step 4: Check UFW rules with numbering
+sudo ufw status numbered
+
+# Step 5: Test the Telnet block rule
+telnet localhost 23
+# Expected Output: Connection refused
+
+# Step 6: Remove the Telnet block rule
+sudo ufw delete deny 23
+
+# Step 7: Final check of UFW rules
+sudo ufw status numbered
